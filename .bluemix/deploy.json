@@ -6,6 +6,9 @@
     "title": {
         "$ref": "#/messages/deploy.title"
     },
+    "description": {
+        "$ref": "#/messages/deploy.description"
+    },
     "longDescription": {
         "$ref": "#/messages/deploy.longDescription"
     },
@@ -27,6 +30,14 @@
             "description": {
                 "$ref": "#/messages/deploy.appDescription3"
             },
+            "type": "string",
+            "pattern": "\\S",
+            "maxLength": 63        
+        },
+        "func-auth": {
+            "description": {
+                "$ref": "#/messages/deploy.funcAuthDescription"
+            },
             "type": "string"
         }
     },
@@ -34,7 +45,8 @@
         "dev-region",
         "dev-organization",
         "dev-space",
-        "mongo-app-name"
+        "mongo-app-name",
+        "func-auth"
     ],
     "form": [
         {
@@ -50,14 +62,27 @@
             "key": "mongo-app-name"
         },
         {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.funcAuth"
+            },
+            "key": "func-auth"
+        },        
+        {
             "type": "table",
-            "columnCount": 3,
+            "columnCount": 4,
             "widths": [
+                "16%",
                 "28%",
                 "28%",
                 "28%"
             ],
             "items": [
+                {
+                    "type": "label",
+                    "title": ""
+                },
                 {
                     "type": "label",
                     "title": {
@@ -77,8 +102,15 @@
                     }
                 },
                 {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/devStage"
+                    }
+                },
+                {
                     "type": "select",
-                    "key": "dev-region"
+                    "key": "dev-region",
+                    "readonly": true
                 },
                 {
                     "type": "select",

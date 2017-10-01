@@ -51,10 +51,11 @@ services:
 form:
   pipeline:
     parameters:
-      dev-region: ""
+      dev-region: ibm:yp:us-south
       dev-organization: ""
       dev-space: dev
       mongo-app-name: '{{services.mongo-lb-repo.parameters.repo_name}}'
+      func-auth: ""
     schema:
       $ref: deploy.json
   hostedgit:
