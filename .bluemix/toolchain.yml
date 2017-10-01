@@ -24,8 +24,8 @@ services:
   mongo-lb-repo:
     service_id: hostedgit
     parameters:
-      repo_name: 'mongo-lb-{{toolchain.name}}'
-      repo_url: 'https://git.ng.bluemix.net/gusharon/telstra-mdb'
+      repo_name: '{{form.hostedgit.parameters.mongo-lb-repo_name}}'
+      repo_url: '{{form.hostedgit.parameters.mongo-lb-repo_url}}'
       type: clone
       has_issues: true
       enable_traceability: true
@@ -58,3 +58,9 @@ form:
       mongo-app-name: '{{services.mongo-lb-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
+  hostedgit:
+    parameters:
+      mongo-lb-repo_name: 'mongo-lb-{{toolchain.name}}'
+      mongo-lb-repo_url: 'https://git.ng.bluemix.net/gusharon/telstra-mdb'
+    schema:
+      $ref: github.json
