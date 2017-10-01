@@ -23,7 +23,7 @@
             "description": "The bluemix space",
             "type": "string"
         },
-        "app-name": {
+        "mongo-app-name": {
             "description": {
                 "$ref": "#/messages/deploy.appDescription"
             },
@@ -34,7 +34,7 @@
         "dev-region",
         "dev-organization",
         "dev-space",
-        "app-name"
+        "mongo-app-name"
     ],
     "form": [
         {
@@ -47,7 +47,7 @@
             "title": {
                 "$ref": "#/messages/deploy.appName"
             },
-            "key": "app-name"
+            "key": "mongo-app-name"
         },
         {
             "type": "table",

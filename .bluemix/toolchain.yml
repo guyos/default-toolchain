@@ -38,11 +38,11 @@ services:
       ui-pipeline: true
       configuration:
         content:
-          $text: pipeline.yml
+          $text: mongo-lb.pipeline.yml
         env:
           REPO: repo
           BRANCH: '{{branch}}'
-          CF_APP: '{{form.pipeline.parameters.app-name}}'
+          CF_APP: '{{form.pipeline.parameters.mongo-app-name}}'
           CF_SPACE: '{{form.pipeline.parameters.dev-space}}'
           CF_ORGANIZATION: '{{form.pipeline.parameters.dev-organization}}'
           CF_REGION_ID: '{{form.pipeline.parameters.dev-region}}'
@@ -52,9 +52,9 @@ services:
 form:
   pipeline:
     parameters:
-      dev-region: '{{region}}'
-      dev-organization: '{{organization}}'
+      dev-region: ""
+      dev-organization: ""
       dev-space: dev
-      app-name: '{{services.mongo-lb-repo.parameters.repo_name}}'
+      mongo-app-name: '{{services.mongo-lb-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
