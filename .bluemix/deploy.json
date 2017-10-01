@@ -108,7 +108,7 @@
                     }
                 },
                 {
-                    "type": "select",
+                    "type": "text",
                     "key": "dev-region",
                     "readonly": true
                 },
