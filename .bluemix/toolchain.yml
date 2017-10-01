@@ -9,31 +9,32 @@ template:
   header: '![](toolchain.png)'
   icon: icon.svg
   required:
-    - build
-    - repo
+    - mongo-lb-build
+    - mongo-lb-repo
   info:
     git url: >-
-      [https://github.com/open-toolchain/default-toolchain](https://github.com/open-toolchain/default-toolchain)
+      [https://git.ng.bluemix.net/gusharon/pds-toolchain](https://git.ng.bluemix.net/gusharon/pds-toolchain)
+    git branch: '[master](https://git.ng.bluemix.net/gusharon/pds-toolchain/tree/master)'
 toolchain:
-  name: '{{baseName}}-{{timestamp}}'
+  name: 'pds-toolchain-{{timestamp}}'
   template:
     getting_started:
       $ref: '#/messages/toolchain.getting_started'
 services:
-  repo:
+  mongo-lb-repo:
     service_id: hostedgit
     parameters:
-      repo_name: '{{toolchain.name}}'
-      repo_url: '{{repository}}'
+      repo_name: 'mongo-lb-{{toolchain.name}}'
+      repo_url: 'https://git.ng.bluemix.net/gusharon/telstra-mdb'
       type: clone
       has_issues: true
       enable_traceability: true
-  build:
+  mongo-lb-build:
     service_id: pipeline
     parameters:
       services:
-        - repo
-      name: '{{toolchain.name}}'
+        - mongo-lb-repo
+      name: 'mongo-lb-{{toolchain.name}}'
       ui-pipeline: true
       configuration:
         content:
@@ -54,6 +55,6 @@ form:
       dev-region: '{{region}}'
       dev-organization: '{{organization}}'
       dev-space: dev
-      app-name: '{{services.repo.parameters.repo_name}}'
+      app-name: '{{services.mongo-lb-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
