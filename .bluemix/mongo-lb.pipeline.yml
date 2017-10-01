@@ -3,8 +3,8 @@ stages:
 - name: Build Stage
   inputs:
   - type: git
-    branch: ${BRANCH}
-    service: ${REPO}
+    branch: master
+    service: ${MONGO_LB_REPO}
   jobs:
   - name: Build
     type: builder
@@ -20,10 +20,10 @@ stages:
   - name: Deploy
     type: deployer
     target:
-      region_id: ${CF_REGION_ID}
-      organization: ${CF_ORGANIZATION}
-      space: ${CF_SPACE}
-      application: ${CF_APP}
+      region_id: ${DEV_REGION_ID}
+      organization: ${DEV_ORG_NAME}
+      space: ${DEV_SPACE_NAME}
+      application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
       cf push "${CF_APP}"
