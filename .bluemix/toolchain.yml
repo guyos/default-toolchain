@@ -38,7 +38,7 @@ services:
       ui-pipeline: true
       configuration:
         content:
-          $text: mongo-lb.pipeline.yml
+          $text: pipeline.yml
         env:
           REPO: repo
           BRANCH: '{{branch}}'
